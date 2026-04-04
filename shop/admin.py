@@ -11,3 +11,5 @@ class ClothesAdmin(admin.ModelAdmin):
     search_fields = ["brand"]
     list_filter = ["brand", "size", "color"]
     list_editable = ["title"]
+
+admin.site.register(Clothes,admin_class = ClothesAdmin)
