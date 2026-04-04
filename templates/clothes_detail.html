@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ item.title }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-900">
+
+<header class="text-gray-400 bg-gray-900 body-font border-b border-gray-800">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">My Store</span>
+    </a>
+    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+      <a href="/" class="mr-5 hover:text-white">Home page</a>
+    </nav>
+  </div>
+</header>
+
+<section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-16 mx-auto">
+
+    <a href="{% url 'clothes_list' %}" class="text-indigo-400 hover:text-indigo-300 mb-8 inline-block">← Back</a>
+
+    <div class="lg:flex lg:gap-12">
+
+      <div class="lg:w-1/2">
+        <img src="{{ item.image.url }}" alt="{{ item.title }}" class="w-full rounded-lg object-cover mb-4">
+        <div class="flex gap-4">
+          {% if item.image2 %}
+            <img src="{{ item.image2.url }}" alt="{{ item.title }}" class="w-1/2 rounded-lg object-cover">
+          {% endif %}
+          {% if item.image3 %}
+            <img src="{{ item.image3.url }}" alt="{{ item.title }}" class="w-1/2 rounded-lg object-cover">
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="lg:w-1/2 mt-8 lg:mt-0">
+        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">{{ item.Brand }}</h3>
+        <h1 class="text-white text-3xl title-font font-medium mb-4">{{ item.title }}</h1>
+
+        <p class="leading-relaxed mb-6">{{ item.description }}</p>
+
+        <div class="mb-4">
+          <span class="text-white font-medium mr-3">Sizes:</span>
+          {% for s in item.size.all %}
+            <span class="border border-gray-700 text-gray-400 px-3 py-1 rounded mr-2 text-sm">{{ s }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="mb-6">
+          <span class="text-white font-medium mr-3">Colors:</span>
+          {% for c in item.color.all %}
+            <span class="border border-gray-700 text-gray-400 px-3 py-1 rounded mr-2 text-sm">{{ c }}</span>
+          {% endfor %}
+        </div>
+
+        <button class="flex text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          Buy
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="text-gray-400 bg-gray-900 body-font border-t border-gray-800">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span class="ml-3 text-xl">My Store</span>
+    </a>
+    <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2025 My Store</p>
+  </div>
+</footer>
+
+</body>
+</html>
