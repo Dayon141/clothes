@@ -14,7 +14,7 @@ def registratciya(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form}) 
 
-def clothes_list(request):
+def home(request):
     clothes = Clothes.objects.all()
     brands = Brand.objects.all()
     sizes = Size.objects.all()
@@ -37,7 +37,7 @@ def clothes_list(request):
         'sizes': sizes,
         'colors': colors,
     }
-    return render(request, 'clothes.html', context)
+    return render(request, 'home.html', context)
 
 def clothes_detail(request, pk):
     item = get_object_or_404(Clothes, pk=pk)
