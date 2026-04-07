@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Clothes, Brand, Size, Color
 from .forms import RegisterForm
 from django.contrib.auth import login, logout, authenticate
+from django.shortcuts import redirect
 
 def registratciya(request):
     if request.method == 'POST':
