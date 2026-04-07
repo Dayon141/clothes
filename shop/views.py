@@ -1,5 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Clothes, Brand, Size, Color
+from .forms import RegisterForm
+from django.contrib.auth import login, logout, authenticate
+
+def registratciya(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form}) 
 
 def clothes_list(request):
     clothes = Clothes.objects.all()
