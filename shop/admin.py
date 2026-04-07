@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Clothes, Brand, Size, Color
+from django.utils.html import format_html
 
 admin.site.register(Color)
 admin.site.register(Brand)
