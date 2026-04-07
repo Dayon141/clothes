@@ -6,12 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" >
+    <form method="post">
         {{form.as_p}}
         {% csrf_token %}
         <input type="submit" name="Registraciya">
         <a href="{% url 'home' %}">Home page</a>
-        <a href="{% url 'login' %}">Login</a>
     </form>
 </body>
 </html>
