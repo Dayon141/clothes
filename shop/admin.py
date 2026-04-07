@@ -12,4 +12,10 @@ class ClothesAdmin(admin.ModelAdmin):
     list_filter = ['Brand', 'size', 'color']
     list_editable = ['title']
 
+    def image_admin(self,obj):
+        if obj.image1:
+            return format_html('<img src="{}" width="50" height="50" />', obj.image1.url)
+        return "Suwret joq"
+    image_admin.short_description = 'Image'
+
 admin.site.register(Clothes, admin_class=ClothesAdmin)
