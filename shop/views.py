@@ -13,7 +13,23 @@ def registratciya(request):
             return redirect('home')
     else:
         form = RegisterForm()
-    return render(request, 'register.html', {'form': form}) 
+    return render(request, 'register.html', {'form': form})
+
+def login(request):
+    if request.method == 'POST':
+        form = Login(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                Login(request, user)
+                return render(request, 'home.html')
+        else:
+            return render(request, 'login.html')
+    else:
+        form = Login()
+    return render(request, 'login.html', {'form': form} )
 
 def home(request):
     clothes = Clothes.objects.all()
