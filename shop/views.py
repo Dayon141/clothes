@@ -31,6 +31,10 @@ def login(request):
         form = Login()
     return render(request, 'login.html', {'form': form} )
 
+def log_out(request):
+    logout(request)
+    return redirect('login')
+
 def home(request):
     clothes = Clothes.objects.all()
     brands = Brand.objects.all()
