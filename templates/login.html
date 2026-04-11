@@ -1,13 +1,10 @@
+{% extends 'basic.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+{% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
+{% endblock %}
+{% block title %}Login{% endblock %}
+{% block content %}
   <div class="wrapper">
     <form method="post">
       {% csrf_token %}
@@ -24,5 +21,4 @@
       <p>You have not account? <a href="{% url 'Registration' %}">Register</a></p>
     </form>
   </div>
-</body>
-</html>
+{% endblock %}
